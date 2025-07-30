@@ -1,0 +1,660 @@
+/* Messages Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #262626;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Remove the initial opacity and animation that causes scroll issues */
+    opacity: 1;
+}
+
+/* Page transition animations - Modified to prevent scroll issues */
+@keyframes fadeInPage {
+    from {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth transition for page navigation - Modified */
+.page-transition {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbdbdb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(219, 219, 219, 0.3);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    max-width: 975px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #262626;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.logo i {
+    color: #ff6b9d;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 24px;
+    font-size: 20px;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #fafafa;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #8e8e8e;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-height: 48px;
+    /* Better touch targets for mobile */
+    -webkit-tap-highlight-color: rgba(255, 107, 157, 0.2);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.nav-tab i {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+.nav-tab:hover {
+    color: #262626;
+    background-color: rgba(255, 107, 157, 0.05);
+}
+
+.nav-tab.active {
+    color: #0095f6;
+    border-bottom-color: #0095f6;
+    background-color: rgba(0, 149, 246, 0.05);
+}
+
+.nav-tab:active {
+    transform: scale(0.98);
+    background-color: rgba(255, 107, 157, 0.1);
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 102px; /* Adjusted for new navbar height */
+    min-height: calc(100vh - 102px);
+    padding-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    margin: 20px 20px 20px 20px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.page-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-header h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.page-header h1:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 6px 20px rgba(255, 255, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.page-header h1:hover::before {
+    left: 100%;
+}
+
+.page-header h1 i {
+    margin-right: 12px;
+}
+
+.page-header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Messages Container */
+.messages-container {
+    padding: 40px 0;
+}
+
+.message-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.message-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.sender-info {
+    flex: 1;
+}
+
+.sender-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #262626;
+}
+
+.relationship {
+    font-size: 14px;
+    color: #8e8e8e;
+    background-color: #f8f9fa;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.message-date {
+    font-size: 14px;
+    color: #8e8e8e;
+    font-weight: 500;
+}
+
+.message-content {
+    margin-bottom: 16px;
+}
+
+.message-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #262626;
+}
+
+.message-footer {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.reaction-btn {
+    background: none;
+    border: 1px solid #dbdbdb;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #8e8e8e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.reaction-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #ff6b9d;
+    color: #ff6b9d;
+}
+
+.reaction-btn.active {
+    background-color: #ff6b9d;
+    border-color: #ff6b9d;
+    color: white;
+}
+
+.reaction-btn span {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* Add Message Section */
+.add-message-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    margin: 40px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #dbdbdb;
+}
+
+.add-message-section h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #262626;
+    text-align: center;
+}
+
+.add-message-section h2 i {
+    color: #ff6b9d;
+    margin-right: 8px;
+}
+
+.add-message-section > p {
+    font-size: 16px;
+    color: #8e8e8e;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.message-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+}
+
+.submit-btn i {
+    margin-right: 8px;
+}
+
+/* Success Message */
+.success-message {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,184,148,0.3);
+    z-index: 1500;
+    animation: slideInRight 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.success-message i {
+    margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 15px 0 15px;
+    }
+    
+    .page-header {
+        margin: 20px 15px;
+        padding: 30px 15px;
+    }
+    
+    .page-header h1 {
+        font-size: 24px;
+        padding: 12px 18px;
+        margin-bottom: 16px;
+    }
+    
+    .page-header p {
+        font-size: 16px;
+    }
+    
+    .message-card {
+        padding: 20px;
+    }
+    
+    .add-message-section {
+        padding: 24px 20px;
+    }
+    
+    .add-message-section h2 {
+        font-size: 20px;
+    }
+    
+    .nav-container {
+        padding: 12px 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .nav-tab {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .nav-tab i {
+        font-size: 14px;
+        margin-right: 4px;
+    }
+    
+    .message-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .reaction-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 20px;
+        padding: 10px 16px;
+        margin-bottom: 14px;
+    }
+    
+    .page-header p {
+        font-size: 14px;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .sender-info {
+        order: -1;
+    }
+    
+    .avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .add-message-section h2 {
+        font-size: 18px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .nav-tab {
+        padding: 8px 8px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+    
+    .nav-tab i {
+        font-size: 12px;
+        margin-right: 3px;
+    }
+    
+    .dropdown-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .success-message {
+        right: 10px;
+        left: 10px;
+        text-align: center;
+    }
+}
+
+/* Animation Effects */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.message-card:nth-child(1) { animation-delay: 0.1s; }
+.message-card:nth-child(2) { animation-delay: 0.2s; }
+.message-card:nth-child(3) { animation-delay: 0.3s; }
+.message-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Heart animation for reactions */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.reaction-btn.active i {
+    animation: heartBeat 0.3s ease;
+}
+
+/* Form validation styles */
+.form-group input:invalid,
+.form-group select:invalid,
+.form-group textarea:invalid {
+    border-color: #ed4956;
+}
+
+.form-group input:valid,
+.form-group select:valid,
+.form-group textarea:valid {
+    border-color: #00b894;
+}

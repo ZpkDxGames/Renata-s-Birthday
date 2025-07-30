@@ -1,0 +1,726 @@
+/* Main Styles for Renata's Birthday Project */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #262626;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    min-height: 100vh;
+    /* Safari mobile viewport fixes */
+    min-height: -webkit-fill-available;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Remove the initial opacity and animation that causes scroll issues */
+    opacity: 1;
+}
+
+/* Page transition animations - Modified to prevent scroll issues */
+@keyframes fadeInPage {
+    from {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth transition for page navigation - Modified */
+.page-transition {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+html {
+    height: -webkit-fill-available;
+    scroll-behavior: smooth;
+}
+
+/* Fix for Safari mobile safe areas */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+        padding-top: max(0px, env(safe-area-inset-top));
+    }
+    
+    .main-content {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbdbdb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(219, 219, 219, 0.3);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    max-width: 975px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #262626;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.logo i {
+    color: #ff6b9d;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 24px;
+    font-size: 20px;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #fafafa;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #8e8e8e;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-height: 48px;
+    /* Better touch targets for mobile */
+    -webkit-tap-highlight-color: rgba(255, 107, 157, 0.2);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.nav-tab i {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+.nav-tab:hover {
+    color: #262626;
+    background-color: rgba(255, 107, 157, 0.05);
+}
+
+.nav-tab.active {
+    color: #0095f6;
+    border-bottom-color: #0095f6;
+    background-color: rgba(0, 149, 246, 0.05);
+}
+
+.nav-tab:active {
+    transform: scale(0.98);
+    background-color: rgba(255, 107, 157, 0.1);
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 102px; /* Adjusted for new navbar height */
+    min-height: calc(100vh - 102px);
+    padding-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.container {
+    max-width: 614px;
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    margin: 40px 20px 20px 20px;
+    padding: 40px 20px;
+    border-radius: 16px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.welcome-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.birthday-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.birthday-info h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin-top: 12px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.birthday-info h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.birthday-info h2:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 6px 20px rgba(255, 255, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.birthday-info h2:hover::before {
+    left: 100%;
+}
+
+.birthday-date {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+/* Time Counter Styles */
+.time-counter {
+    margin: 15px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    box-shadow: 
+        0 8px 25px rgba(255, 107, 157, 0.4),
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.time-counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.time-counter:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(255, 107, 157, 0.5),
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.counter-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    opacity: 0.95;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.counter-display {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.counter-years, .counter-months, .counter-days {
+    display: inline-block;
+    transition: all 0.3s ease;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.birthday-subtitle {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+/* Photo Feed Styles (Instagram-like) */
+.photo-feed {
+    margin-top: 30px;
+}
+
+.post {
+    background-color: #ffffff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+}
+
+.post-profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-info {
+    flex: 1;
+}
+
+.post-username {
+    font-size: 14px;
+    font-weight: 600;
+    color: #262626;
+    margin: 0;
+}
+
+.post-location {
+    font-size: 12px;
+    color: #8e8e8e;
+}
+
+.post-options {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    color: #262626;
+}
+
+.post-image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Better image loading on Safari */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Prevent image selection on mobile */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Smooth image scaling */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 16px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.action-btn,
+.bookmark-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    color: #262626;
+    transition: opacity 0.2s ease;
+    /* Better touch targets for mobile */
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Touch feedback for Safari */
+    -webkit-tap-highlight-color: rgba(255, 107, 157, 0.2);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.action-btn:hover,
+.bookmark-btn:hover {
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Active state for better mobile feedback */
+.action-btn:active,
+.bookmark-btn:active {
+    transform: scale(0.95);
+    background-color: rgba(255, 107, 157, 0.1);
+}
+
+.post-content {
+    padding: 0 16px 16px 16px;
+}
+
+.likes {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.caption {
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 18px;
+}
+
+.caption strong {
+    font-weight: 600;
+}
+
+.comments {
+    margin-bottom: 8px;
+}
+
+.comment {
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 4px;
+}
+
+.comment strong {
+    font-weight: 600;
+}
+
+.post-time {
+    font-size: 12px;
+    color: #8e8e8e;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 15px 0 15px;
+    }
+    
+    .welcome-section {
+        margin: 30px 15px 20px 15px;
+        padding: 30px 15px;
+    }
+    
+    .birthday-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .birthday-info h2 {
+        font-size: 24px;
+        padding: 12px 18px;
+        margin-bottom: 12px;
+    }
+    
+    .time-counter {
+        margin: 12px 0;
+        padding: 12px;
+    }
+    
+    .counter-display {
+        font-size: 18px;
+    }
+    
+    .counter-label {
+        font-size: 14px;
+    }
+    
+    .nav-container {
+        padding: 12px 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .nav-tab {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .nav-tab i {
+        font-size: 14px;
+        margin-right: 4px;
+    }
+    
+    /* Larger touch targets on tablet */
+    .action-btn,
+    .bookmark-btn {
+        min-width: 48px;
+        min-height: 48px;
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-info h2 {
+        font-size: 20px;
+        padding: 10px 16px;
+        margin-bottom: 10px;
+    }
+    
+    .birthday-date {
+        font-size: 16px;
+    }
+    
+    .time-counter {
+        margin: 10px 0;
+        padding: 10px;
+    }
+    
+    .counter-display {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    
+    .counter-label {
+        font-size: 13px;
+    }
+    
+    .birthday-subtitle {
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .nav-tab {
+        padding: 8px 8px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+    
+    .nav-tab i {
+        font-size: 12px;
+        margin-right: 3px;
+    }
+    
+    /* Optimize for small screens */
+    .container {
+        padding: 10px 10px 0 10px;
+    }
+    
+    .post {
+        margin-bottom: 20px;
+    }
+    
+    .post-content {
+        padding: 0 12px 12px 12px;
+    }
+    
+    /* Better spacing for mobile */
+    .action-buttons {
+        gap: 12px;
+    }
+}
+
+/* Special styles for iPhone and Safari mobile */
+@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+    .main-content {
+        margin-top: 102px;
+    }
+    
+    .welcome-section {
+        padding: 30px 15px;
+        margin: 15px -8px;
+    }
+    
+    .birthday-info h2 {
+        font-size: 18px;
+    }
+    
+    .post-header {
+        padding: 16px;
+    }
+    
+    .post-actions {
+        padding: 8px 16px;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.post {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Heart animation for liked posts */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.action-btn.liked {
+    color: #ed4956;
+    animation: heartBeat 0.3s ease;
+}
